@@ -10,7 +10,7 @@ public abstract class AbstractSingleInput implements ISudokuInput {
         return false;
     }
 
-    public final IMatrix getSingleInput() throws MatrixReadException {
+    public final IMatrix getSingleInput() {
         if (inputMatrix == null) {
             this.read();
         }

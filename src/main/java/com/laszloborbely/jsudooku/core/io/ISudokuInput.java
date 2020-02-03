@@ -1,6 +1,6 @@
 package com.laszloborbely.jsudooku.core.io;
 
 public interface ISudokuInput {
-    void read() throws MatrixReadException;
+    void read();
     boolean many();
 }
