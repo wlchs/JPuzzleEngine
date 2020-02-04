@@ -104,6 +104,7 @@ public abstract class AbstractSolver {
      * Start solver execution
      * In this abstract class, only handler checks are implemented
      * Actual solver implementation must be done in the inheriting classes
+     *
      * @throws Exception If either input or output is not set
      */
     public void solve() throws Exception {

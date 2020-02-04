@@ -16,7 +16,8 @@ public class StrategySolver extends AbstractSolver {
 
     /**
      * Initializing constructor
-     * @param input Input handler
+     *
+     * @param input  Input handler
      * @param output Output handler
      */
     public StrategySolver(ISudokuInput input, ISudokuOutput output) {
@@ -27,6 +28,7 @@ public class StrategySolver extends AbstractSolver {
      * Overridden solver function
      * Makes use of the parent function for executing handler checks
      * Creates the matching strategy type using the strategy factory class
+     *
      * @throws Exception If any of the handlers were left uninitialized
      */
     @Override
