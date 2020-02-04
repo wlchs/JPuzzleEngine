@@ -19,7 +19,7 @@ public interface ISudokuInput {
      *
      * @return True if more, false is single
      */
-    boolean many();
+    boolean streamed();
 
     /**
      * Retrieves solution-space reducer strategy
