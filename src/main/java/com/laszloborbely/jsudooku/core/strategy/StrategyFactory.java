@@ -1,40 +1,61 @@
 package com.laszloborbely.jsudooku.core.strategy;
 
-import com.laszloborbely.jsudooku.core.io.*;
+import com.laszloborbely.jsudooku.core.io.ISudokuInput;
+import com.laszloborbely.jsudooku.core.io.ISudokuOutput;
 
+/**
+ * Singleton factory for creating the matching solving strategy for the input and output handlers
+ */
 public final class StrategyFactory {
-    public static IStrategy createFrom(AbstractSingleInput input, AbstractSingleOutput output) {
-        return new SingleInputSimpleStrategy(input, output);
-    }
+    /**
+     * Static factory method for strategy creation
+     *
+     * @param input  Input handler
+     * @param output Output handler
+     * @return Returns the matching strategy implementation
+     */
+    public static IStrategy createFrom(ISudokuInput input, ISudokuOutput output) {
+        /*
+         * Check for streaming input
+         */
+        boolean streamedInput = input.streamed();
 
-    public static IStrategy createFrom(AbstractSingleInput input, AbstractMultiOutput output) {
-        return new SingleInputExhaustiveStrategy(input, output);
-    }
+        /*
+         * Check whether all solutions are required or only one
+         */
+        boolean exhaustiveOutput = output.exhaustive();
 
-    public static IStrategy createFrom(AbstractMultiInput input, AbstractSingleOutput output) {
-        return new ManyInputSimpleStrategy(input, output);
-    }
+        /*
+         * Single input single solution
+         */
+        if (!streamedInput && !exhaustiveOutput) {
+            return new SingleInputSimpleStrategy(input, output);
+        }
 
-    public static IStrategy createFrom(AbstractMultiInput input, AbstractMultiOutput output) {
+        /*
+         * Single input every solution
+         */
+        if (!streamedInput) {
+            return new SingleInputExhaustiveStrategy(input, output);
+        }
+
+        /*
+         * Multiple inputs single solution
+         */
+        if (!exhaustiveOutput) {
+            return new ManyInputSimpleStrategy(input, output);
+        }
+
+        /*
+         * Multiple inputs every solution
+         */
         return new ManyInputExhaustiveStrategy(input, output);
     }
 
-    public static IStrategy createFrom(ISudokuInput input, ISudokuOutput output) {
-        boolean inputArity = input.many();
-        boolean outputArity = output.many();
-
-        if (!inputArity && !outputArity) {
-            return createFrom((AbstractSingleInput) input, (AbstractSingleOutput) output);
-        }
-        if (!inputArity) {
-            return createFrom((AbstractSingleInput) input, (AbstractMultiOutput) output);
-        }
-        if (!outputArity) {
-            return createFrom((AbstractMultiInput) input, (AbstractSingleOutput) output);
-        }
-        return createFrom((AbstractMultiInput) input, (AbstractMultiOutput) output);
-    }
-
+    /**
+     * Private constructor
+     * No object creation is required
+     */
     private StrategyFactory() {
     }
 }
