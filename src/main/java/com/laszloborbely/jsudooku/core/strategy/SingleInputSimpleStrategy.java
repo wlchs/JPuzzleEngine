@@ -46,7 +46,7 @@ public class SingleInputSimpleStrategy implements IStrategy {
         /*
          * Get input matrix from input handler
          */
-        IMatrix inputMatrix = this.input.getSingleInput();
+        IMatrix inputMatrix = this.input.read();
 
         /*
          * Get reducer object from input handler
@@ -81,28 +81,37 @@ public class SingleInputSimpleStrategy implements IStrategy {
             IMatrix matrix = matrixStack.pop();
 
             /*
-             * Check if the top element is a valid solution
+             * Check if the top element is valid
              */
-            if (reducer.solve(matrix)) {
+            if (reducer.validate(matrix)) {
 
                 /*
+                 * Check if the top element is a solution
                  * If yes, set it as the output and terminate execution
                  */
-                outputMatrix = matrix;
+                if (reducer.solve(matrix)) {
+                    outputMatrix = matrix;
 
-            } else if (reducer.validate(matrix)) {
-                /*
-                 * Otherwise check if its valid
-                 * If yes, split into two
-                 */
-                MatrixPair split = reducer.split(matrix);
+                } else {
+                    /*
+                     * Split solution space into two
+                     */
+                    MatrixPair split = reducer.split(matrix);
 
-                /*
-                 * Push both parts to the matrix stack
-                 */
-                matrixStack.push(split.getFirst());
-                matrixStack.push(split.getSecond());
+                    /*
+                     * Check first matrix, if not null, push to stack
+                     */
+                    if (split.getFirst() != null) {
+                        matrixStack.push(split.getFirst());
+                    }
 
+                    /*
+                     * Check second matrix, if not null, push to stack
+                     */
+                    if (split.getSecond() != null) {
+                        matrixStack.push(split.getSecond());
+                    }
+                }
             }
         }
 
