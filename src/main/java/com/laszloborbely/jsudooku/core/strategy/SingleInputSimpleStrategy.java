@@ -1,7 +1,7 @@
 package com.laszloborbely.jsudooku.core.strategy;
 
-import com.laszloborbely.jsudooku.core.io.AbstractSingleInput;
-import com.laszloborbely.jsudooku.core.io.AbstractSingleOutput;
+import com.laszloborbely.jsudooku.core.io.ISudokuInput;
+import com.laszloborbely.jsudooku.core.io.ISudokuOutput;
 import com.laszloborbely.jsudooku.core.matrix.IMatrix;
 import com.laszloborbely.jsudooku.core.matrix.IMatrixReducer;
 import com.laszloborbely.jsudooku.core.matrix.MatrixPair;
@@ -18,13 +18,13 @@ public class SingleInputSimpleStrategy implements IStrategy {
      * Input object for a single puzzle
      * Contains exactly one IMatrix element and a reducer object containing matrix reduction rules
      */
-    protected AbstractSingleInput input;
+    protected ISudokuInput input;
 
     /**
      * Output object for a single solution
      * Exactly one solution matrix can be set
      */
-    protected AbstractSingleOutput output;
+    protected ISudokuOutput output;
 
     /**
      * Constructor
@@ -33,7 +33,7 @@ public class SingleInputSimpleStrategy implements IStrategy {
      * @param input  Parameter containing exactly one IMatrix and a MatrixReducer object
      * @param output Parameter containing an empty output handler
      */
-    public SingleInputSimpleStrategy(AbstractSingleInput input, AbstractSingleOutput output) {
+    public SingleInputSimpleStrategy(ISudokuInput input, ISudokuOutput output) {
         this.input = input;
         this.output = output;
     }
@@ -118,7 +118,7 @@ public class SingleInputSimpleStrategy implements IStrategy {
         /*
          * At the end, set potential solution as output
          */
-        this.output.setSingleOutput(outputMatrix);
+        this.output.write(outputMatrix);
 
     }
 }
