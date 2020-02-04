@@ -5,7 +5,6 @@ package com.laszloborbely.jsudooku.core.matrix;
  * Defines functions to implement solution search-space reduction
  */
 public interface IMatrixReducer {
-
     /**
      * Validates current matrix according to several user-defined rules
      *
