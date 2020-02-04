@@ -1,22 +1,16 @@
 package com.laszloborbely.jsudooku.core.io;
 
-import com.laszloborbely.jsudooku.core.matrix.IMatrix;
-
+/**
+ * Abstract class representing handler for multiple input puzzles
+ */
 public abstract class AbstractMultiInput implements ISudokuInput {
-    protected IMatrix inputMatrix;
-
+    /**
+     * Boolean function indicating that there are multiple input objects available
+     *
+     * @return Always true
+     */
     @Override
     public final boolean many() {
         return true;
-    }
-
-    public final IMatrix getNextInput() throws MatrixReadException {
-        if (inputMatrix == null) {
-            this.read();
-        }
-
-        IMatrix next = this.inputMatrix;
-        this.inputMatrix = null;
-        return next;
     }
 }

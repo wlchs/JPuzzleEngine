@@ -1,19 +1,16 @@
 package com.laszloborbely.jsudooku.core.io;
 
-import com.laszloborbely.jsudooku.core.matrix.IMatrix;
-
+/**
+ * Abstract class representing handler for single input puzzle
+ */
 public abstract class AbstractSingleInput implements ISudokuInput {
-    protected IMatrix inputMatrix;
-
+    /**
+     * Boolean function indicating that there are no multiple input objects available
+     *
+     * @return Always false
+     */
     @Override
     public final boolean many() {
         return false;
-    }
-
-    public final IMatrix getSingleInput() {
-        if (inputMatrix == null) {
-            this.read();
-        }
-        return this.inputMatrix;
     }
 }
