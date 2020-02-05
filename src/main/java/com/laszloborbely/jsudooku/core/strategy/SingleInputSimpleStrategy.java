@@ -81,6 +81,11 @@ public class SingleInputSimpleStrategy implements IStrategy {
             IMatrix matrix = matrixStack.pop();
 
             /*
+             * Write intermediate state
+             */
+            output.writeIntermediate(matrix);
+
+            /*
              * Check if the top element is valid
              */
             if (reducer.validate(matrix)) {

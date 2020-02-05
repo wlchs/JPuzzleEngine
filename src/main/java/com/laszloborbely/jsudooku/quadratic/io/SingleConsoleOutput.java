@@ -44,9 +44,27 @@ public class SingleConsoleOutput implements ISudokuOutput {
                 QuadraticMatrixElement element = output.getElement(index);
 
                 /*
-                 * Retrieve first matrix field value
+                 * Initialize value field
                  */
-                short value = element.getValues().get(0);
+                short value;
+
+                /*
+                 * Check if the element is fixed
+                 */
+                if (element.fixed()) {
+
+                    /*
+                     * Retrieve first matrix field value
+                     */
+                    value = element.getValues().get(0);
+
+                } else {
+
+                    /*
+                     * If not, replace it with 0
+                     */
+                    value = 0;
+                }
 
                 /*
                  * Print next value inline
@@ -59,6 +77,22 @@ public class SingleConsoleOutput implements ISudokuOutput {
              */
             System.out.println();
         }
+
+        /*
+         * Empty line after matrix
+         */
+        System.out.println();
+    }
+
+    /**
+     * Writer function for intermediate matrix states
+     * Logs the state to the console by substituting 0s for unfixed fields
+     *
+     * @param matrix Intermediate state matrix
+     */
+    @Override
+    public void writeIntermediate(IMatrix matrix) {
+        this.write(matrix);
     }
 
     /**
