@@ -1,6 +1,6 @@
 package com.laszloborbely.jpuzzle.sudoku.matrix;
 
-import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
+import com.laszloborbely.jpuzzle.core.puzzle.IIterablePuzzle;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleElement;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleIndex;
 
@@ -10,7 +10,7 @@ import java.util.Iterator;
  * Quadratic matrix puzzle implementation
  * Contains a 2D array of matrix elements
  */
-public final class QuadraticMatrix implements IPuzzle {
+public final class QuadraticMatrix implements IIterablePuzzle {
     /**
      * Actual array containing field values
      */

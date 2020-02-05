@@ -3,6 +3,7 @@ package com.laszloborbely.jpuzzle.sudoku.rules;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleElement;
 import com.laszloborbely.jpuzzle.core.rules.ISolutionCriteria;
+import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrix;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrixElement;
 
 /**
@@ -18,7 +19,9 @@ public class QuadraticSolutionCriteria implements ISolutionCriteria {
      */
     @Override
     public boolean isSolved(IPuzzle puzzle) {
-        for (IPuzzleElement element : puzzle) {
+        QuadraticMatrix matrix = (QuadraticMatrix) puzzle;
+
+        for (IPuzzleElement element : matrix) {
             QuadraticMatrixElement e = (QuadraticMatrixElement) element;
 
             if (!e.fixed()) {
