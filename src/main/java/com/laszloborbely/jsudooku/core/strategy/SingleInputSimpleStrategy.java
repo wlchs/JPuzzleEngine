@@ -13,7 +13,6 @@ import java.util.Stack;
  * Runs until a valid solution is found
  */
 public class SingleInputSimpleStrategy implements IStrategy {
-
     /**
      * Input object for a single puzzle
      * Contains exactly one IMatrix element and a reducer object containing matrix reduction rules
@@ -83,7 +82,7 @@ public class SingleInputSimpleStrategy implements IStrategy {
             /*
              * Write intermediate state
              */
-            output.writeIntermediate(matrix);
+            /* output.writeIntermediate(matrix); */
 
             /*
              * Check if the top element is valid
