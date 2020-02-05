@@ -89,7 +89,7 @@ public class SingleInputSimpleStrategy implements IStrategy {
                  * Check if the top element is a solution
                  * If yes, set it as the output and terminate execution
                  */
-                if (reducer.solve(matrix)) {
+                if (reducer.solution(matrix)) {
                     outputMatrix = matrix;
 
                 } else {

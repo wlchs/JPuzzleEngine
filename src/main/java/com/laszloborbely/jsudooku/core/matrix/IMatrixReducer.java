@@ -19,7 +19,7 @@ public interface IMatrixReducer {
      * @param matrix Input matrix to check for solutions
      * @return True if the matrix is solved, false if not
      */
-    boolean solve(IMatrix matrix);
+    boolean solution(IMatrix matrix);
 
     /**
      * Splits matrix into two sub-matrices
