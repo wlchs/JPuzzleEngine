@@ -82,7 +82,7 @@ public class SingleInputSimpleStrategy implements IStrategy {
             /*
              * Write intermediate state
              */
-            /* output.writeIntermediate(matrix); */
+            output.writeIntermediate(matrix);
 
             /*
              * Check if the top element is valid
