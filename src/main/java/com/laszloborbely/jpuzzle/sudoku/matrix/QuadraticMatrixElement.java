@@ -123,4 +123,14 @@ public class QuadraticMatrixElement implements IPuzzleElement {
     public void dropFirst() {
         this.values.remove(0);
     }
+
+    /**
+     * Calculate degree of freedom for the current matrix element
+     * Degree of freedom in this case means the total count of potential matrix values in the field
+     *
+     * @return Size of values array
+     */
+    public short degreeOfFreedom() {
+        return (short) this.values.size();
+    }
 }
