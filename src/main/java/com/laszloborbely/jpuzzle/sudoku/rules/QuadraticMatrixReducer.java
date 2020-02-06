@@ -1,14 +1,12 @@
-package com.laszloborbely.jpuzzle.sudoku.matrix;
+package com.laszloborbely.jpuzzle.sudoku.rules;
 
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
-import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleReducer;
+import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 import com.laszloborbely.jpuzzle.core.puzzle.PuzzlePair;
 import com.laszloborbely.jpuzzle.core.rules.ISolutionCriteria;
 import com.laszloborbely.jpuzzle.core.rules.IValidationRule;
-import com.laszloborbely.jpuzzle.sudoku.rules.QColumnValidationRule;
-import com.laszloborbely.jpuzzle.sudoku.rules.QGroupValidationRule;
-import com.laszloborbely.jpuzzle.sudoku.rules.QRowValidationRule;
-import com.laszloborbely.jpuzzle.sudoku.rules.QuadraticSolutionCriteria;
+import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticElementSplitter;
+import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrix;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,7 @@ public class QuadraticMatrixReducer implements IPuzzleReducer {
         validationRules.add(new QRowValidationRule());
         validationRules.add(new QColumnValidationRule());
         validationRules.add(new QGroupValidationRule());
+        validationRules.add(new QNonEmptyRule());
     }
 
     /**

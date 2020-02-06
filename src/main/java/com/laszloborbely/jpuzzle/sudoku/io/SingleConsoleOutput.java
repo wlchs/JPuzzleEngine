@@ -92,7 +92,7 @@ public class SingleConsoleOutput implements IPuzzleOutput {
      */
     @Override
     public void writeIntermediate(IPuzzle puzzle) {
-        this.write(puzzle);
+        // this.write(puzzle);
     }
 
     /**

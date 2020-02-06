@@ -1,11 +1,11 @@
 package com.laszloborbely.jpuzzle.sudoku.io;
 
 import com.laszloborbely.jpuzzle.core.io.IPuzzleInput;
-import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleReducer;
+import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrix;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrixElement;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrixIndex;
-import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrixReducer;
+import com.laszloborbely.jpuzzle.sudoku.rules.QuadraticMatrixReducer;
 
 /**
  * Input handler implementation

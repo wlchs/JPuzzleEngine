@@ -1,4 +1,7 @@
-package com.laszloborbely.jpuzzle.core.puzzle;
+package com.laszloborbely.jpuzzle.core.rules;
+
+import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
+import com.laszloborbely.jpuzzle.core.puzzle.PuzzlePair;
 
 /**
  * Puzzle reducer interface

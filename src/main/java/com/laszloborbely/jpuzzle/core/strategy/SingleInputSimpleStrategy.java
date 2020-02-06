@@ -3,7 +3,7 @@ package com.laszloborbely.jpuzzle.core.strategy;
 import com.laszloborbely.jpuzzle.core.io.IPuzzleInput;
 import com.laszloborbely.jpuzzle.core.io.IPuzzleOutput;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
-import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleReducer;
+import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 import com.laszloborbely.jpuzzle.core.puzzle.PuzzlePair;
 
 import java.util.Stack;
