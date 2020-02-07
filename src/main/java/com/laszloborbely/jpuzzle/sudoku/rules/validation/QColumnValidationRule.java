@@ -1,4 +1,4 @@
-package com.laszloborbely.jpuzzle.sudoku.rules;
+package com.laszloborbely.jpuzzle.sudoku.rules.validation;
 
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrix;

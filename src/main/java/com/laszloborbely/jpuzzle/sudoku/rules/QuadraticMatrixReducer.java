@@ -1,12 +1,17 @@
 package com.laszloborbely.jpuzzle.sudoku.rules;
 
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
-import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 import com.laszloborbely.jpuzzle.core.puzzle.PuzzlePair;
+import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 import com.laszloborbely.jpuzzle.core.rules.ISolutionCriteria;
 import com.laszloborbely.jpuzzle.core.rules.IValidationRule;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticElementSplitter;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrix;
+import com.laszloborbely.jpuzzle.sudoku.rules.solution.criteria.QuadraticSolutionCriteria;
+import com.laszloborbely.jpuzzle.sudoku.rules.validation.QColumnValidationRule;
+import com.laszloborbely.jpuzzle.sudoku.rules.validation.QGroupValidationRule;
+import com.laszloborbely.jpuzzle.sudoku.rules.validation.QNonEmptyRule;
+import com.laszloborbely.jpuzzle.sudoku.rules.validation.QRowValidationRule;
 
 import java.util.ArrayList;
 import java.util.List;
