@@ -43,6 +43,13 @@ public class QColumnReductionStrategy extends QReductionStrategy {
                     reduced = true;
                 }
             }
+
+            /*
+             * Attempt to further reduce puzzle solution space by highlighting uniquely appearing elements
+             */
+            if (this.highlightUniqueElements(column)) {
+                reduced = true;
+            }
         }
 
         return reduced;

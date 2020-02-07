@@ -43,6 +43,13 @@ public class QRowReductionStrategy extends QReductionStrategy {
                     reduced = true;
                 }
             }
+
+            /*
+             * Attempt to further reduce puzzle solution space by highlighting uniquely appearing elements
+             */
+            if (this.highlightUniqueElements(row)) {
+                reduced = true;
+            }
         }
 
         return reduced;

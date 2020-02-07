@@ -38,4 +38,17 @@ public abstract class QReductionStrategy {
 
         return reduced;
     }
+
+    /**
+     * Abstract method to highlight uniquely appearing values in a list by removing every other value
+     * from the corresponding quadratic matrix element
+     *
+     * @param list List of puzzle elements
+     * @return True if at least one element could be highlighted, false otherwise
+     */
+    protected final boolean highlightUniqueElements(List<QuadraticMatrixElement> list) {
+        boolean reduced = false;
+
+        return reduced;
+    }
 }
