@@ -3,7 +3,11 @@ package com.laszloborbely.jpuzzle.sudoku.rules.solution.strategy;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrix;
 import com.laszloborbely.jpuzzle.sudoku.matrix.QuadraticMatrixElement;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Reduction strategy for quadratic sudoku puzzles
@@ -48,6 +52,40 @@ public abstract class QReductionStrategy {
      */
     protected final boolean highlightUniqueElements(List<QuadraticMatrixElement> list) {
         boolean reduced = false;
+        Map<Short, List<QuadraticMatrixElement>> valueMap = new HashMap<>();
+
+        /*
+         * Construct list value-element map
+         */
+        for (QuadraticMatrixElement element : list) {
+            for (Short value : element.getValues()) {
+                List<QuadraticMatrixElement> valueList = valueMap.getOrDefault(value, new ArrayList<>());
+                valueList.add(element);
+                valueMap.put(value, valueList);
+            }
+        }
+
+        /*
+         * Filter unique values
+         */
+        List<Map.Entry<Short, List<QuadraticMatrixElement>>> uniqueValues =
+                valueMap.entrySet()
+                        .stream()
+                        .filter(e -> e.getValue().size() == 1)
+                        .collect(Collectors.toList());
+
+        /*
+         * Drop unwanted values from matrix element list
+         */
+        for (Map.Entry<Short, List<QuadraticMatrixElement>> entry : uniqueValues) {
+            Short value = entry.getKey();
+            QuadraticMatrixElement element = entry.getValue().get(0);
+
+            if (!element.fixed()) {
+                element.setValue(value);
+                reduced = true;
+            }
+        }
 
         return reduced;
     }
