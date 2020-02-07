@@ -9,6 +9,13 @@ import com.laszloborbely.jpuzzle.core.puzzle.PuzzlePair;
  */
 public interface IPuzzleReducer {
     /**
+     * Optimizes the puzzle with quick search-space reduction before an expensive split
+     *
+     * @param puzzle Input puzzle to optimize
+     */
+    void optimize(IPuzzle puzzle);
+
+    /**
      * Validates current puzzle according to several user-defined rules
      *
      * @param puzzle Input puzzle to validate
