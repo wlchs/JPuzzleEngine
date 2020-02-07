@@ -3,8 +3,8 @@ package com.laszloborbely.jpuzzle.core.strategy;
 import com.laszloborbely.jpuzzle.core.io.IPuzzleInput;
 import com.laszloborbely.jpuzzle.core.io.IPuzzleOutput;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzle;
-import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 import com.laszloborbely.jpuzzle.core.puzzle.PuzzlePair;
+import com.laszloborbely.jpuzzle.core.rules.IPuzzleReducer;
 
 import java.util.Stack;
 
@@ -77,6 +77,11 @@ public class SingleInputExhaustiveStrategy implements IStrategy {
              * Write intermediate state
              */
             output.writeIntermediate(puzzle);
+
+            /*
+             * Initial search-space reduction
+             */
+            reducer.optimize(puzzle);
 
             /*
              * Check if the top element is valid

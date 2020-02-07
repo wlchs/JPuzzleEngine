@@ -85,6 +85,11 @@ public class SingleInputSimpleStrategy implements IStrategy {
             output.writeIntermediate(puzzle);
 
             /*
+             * Initial search-space reduction
+             */
+            reducer.optimize(puzzle);
+
+            /*
              * Check if the top element is valid
              */
             if (reducer.validate(puzzle)) {
