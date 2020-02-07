@@ -128,9 +128,10 @@ public class QuadraticMatrixElement implements IPuzzleElement {
      * Method to drop a specific value from the element list
      *
      * @param value Element to drop from list
+     * @return True if the value was removed
      */
-    public void drop(Short value) {
-        this.values.remove(value);
+    public boolean drop(Short value) {
+        return this.values.remove(value);
     }
 
     /**
