@@ -125,6 +125,15 @@ public class QuadraticMatrixElement implements IPuzzleElement {
     }
 
     /**
+     * Method to drop a specific value from the element list
+     *
+     * @param value Element to drop from list
+     */
+    public void drop(Short value) {
+        this.values.remove(value);
+    }
+
+    /**
      * Calculate degree of freedom for the current matrix element
      * Degree of freedom in this case means the total count of potential matrix values in the field
      *
