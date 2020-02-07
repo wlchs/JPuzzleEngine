@@ -4,7 +4,9 @@ import com.laszloborbely.jpuzzle.core.puzzle.IIterablePuzzle;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleElement;
 import com.laszloborbely.jpuzzle.core.puzzle.IPuzzleIndex;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Quadratic matrix puzzle implementation
@@ -128,6 +130,152 @@ public final class QuadraticMatrix implements IIterablePuzzle {
      */
     public short dimension() {
         return (short) matrix.length;
+    }
+
+    /**
+     * Reformat matrix structure by returning a list of lists of quadratic matrix row values
+     *
+     * @return List of row value lists
+     */
+    public List<List<QuadraticMatrixElement>> rows() {
+        /*
+         * Initialize return array
+         */
+        List<List<QuadraticMatrixElement>> rows = new ArrayList<>();
+
+        /*
+         * Iterate over rows
+         */
+        for (short r = 0; r < this.dimension(); ++r) {
+
+            /*
+             * Initialize current row array
+             */
+            List<QuadraticMatrixElement> row = new ArrayList<>();
+
+            /*
+             * Iterate over columns
+             */
+            for (short c = 0; c < this.dimension(); ++c) {
+
+                /*
+                 * Retrieve matrix element at the matching index
+                 */
+                QuadraticMatrixElement element = this.getElement(new QuadraticMatrixIndex(r, c));
+
+                /*
+                 * Add stored element to row list
+                 */
+                row.add(element);
+            }
+
+            /*
+             * Add current row value list to rows array
+             */
+            rows.add(row);
+        }
+
+        return rows;
+    }
+
+    /**
+     * Reformat matrix structure by returning a list of lists of quadratic matrix column values
+     *
+     * @return List of column value lists
+     */
+    public List<List<QuadraticMatrixElement>> columns() {
+        /*
+         * Initialize return array
+         */
+        List<List<QuadraticMatrixElement>> columns = new ArrayList<>();
+
+        /*
+         * Iterate over columns
+         */
+        for (short c = 0; c < this.dimension(); ++c) {
+
+            /*
+             * Initialize current column array
+             */
+            List<QuadraticMatrixElement> column = new ArrayList<>();
+
+            /*
+             * Iterate over rows
+             */
+            for (short r = 0; r < this.dimension(); ++r) {
+
+                /*
+                 * Retrieve matrix element at the matching index
+                 */
+                QuadraticMatrixElement element = this.getElement(new QuadraticMatrixIndex(r, c));
+
+                /*
+                 * Add stored element to column list
+                 */
+                column.add(element);
+            }
+
+            /*
+             * Add current column value list to columns array
+             */
+            columns.add(column);
+        }
+
+        return columns;
+    }
+
+    /**
+     * Reformat matrix structure by returning a list of lists of quadratic matrix group values
+     *
+     * @return List of group value lists
+     */
+    public List<List<QuadraticMatrixElement>> groups() {
+        /*
+         * Initialize return array
+         */
+        List<List<QuadraticMatrixElement>> groups = new ArrayList<>();
+
+        /*
+         * Calculate quadratic matrix group size
+         */
+        short groupDimension = (short) Math.round(Math.sqrt(this.dimension()));
+
+        /*
+         * Iterate over each group
+         */
+        for (short horizontalGroups = 0; horizontalGroups < groupDimension; ++horizontalGroups) {
+            for (short verticalGroups = 0; verticalGroups < groupDimension; ++verticalGroups) {
+                /*
+                 * Initialize current group element list
+                 */
+                List<QuadraticMatrixElement> group = new ArrayList<>();
+
+                /*
+                 * Get each element in the corresponding group
+                 */
+                for (short x = 0; x < groupDimension; ++x) {
+                    for (short y = 0; y < groupDimension; ++y) {
+                        QuadraticMatrixIndex index = new QuadraticMatrixIndex(
+                                (short) (horizontalGroups * groupDimension + x),
+                                (short) (verticalGroups * groupDimension + y)
+                        );
+                        QuadraticMatrixElement element = this.getElement(index);
+
+                        /*
+                         * Add group element to current group element list
+                         */
+                        group.add(element);
+                    }
+                }
+
+                /*
+                 * Add current group elements to global group list
+                 */
+                groups.add(group);
+            }
+        }
+
+        return groups;
     }
 
     /**
